@@ -82,6 +82,13 @@
   .card .dl svg{width:16px;height:16px}
   .card .fsize{font-size:11.5px;color:var(--muted);margin-bottom:10px}
 
+  .announce{display:flex;align-items:center;gap:16px;margin-top:30px;background:linear-gradient(120deg,#fff 0%,var(--cream) 100%);border:1px solid var(--line);border-left:4px solid var(--teal);border-radius:16px;padding:18px 22px;box-shadow:var(--shadow)}
+  .announce .an-ic{flex:0 0 44px;width:44px;height:44px;border-radius:12px;background:var(--teal);display:grid;place-items:center;color:#fff}
+  .announce .an-ic svg{width:23px;height:23px}
+  .announce .an-tt{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--teal);margin-bottom:3px}
+  .announce .an-tx{font-size:14.5px;color:var(--ink);line-height:1.45}
+  @media(max-width:680px){.announce{align-items:flex-start}}
+
   .empty{text-align:center;padding:70px 20px;color:var(--muted)}
   .empty .em-ic{width:74px;height:74px;border-radius:20px;background:var(--cream-deep);display:grid;place-items:center;margin:0 auto 18px;color:var(--beige)}
   .empty .em-ic svg{width:36px;height:36px}
@@ -127,6 +134,13 @@
         <div class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg><input type="text" id="searchInput" placeholder="Buscar…" /></div>
       </div>
       <div id="stage"></div>
+      <div class="announce" id="announce" style="display:none">
+        <div class="an-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+        <div>
+          <div class="an-tt">Próxima actualización</div>
+          <div class="an-tx">Este lunes 6 de julio a las 19 h se subirán nuevos contenidos y habrá una actualización en la plataforma.</div>
+        </div>
+      </div>
     </div>
   </main>
 
@@ -180,6 +194,7 @@ function render(){
   renderNav();
   const stage=document.getElementById("stage");
   document.getElementById("backSlot").innerHTML="";
+  document.getElementById("announce").style.display = (view==="folder") ? "none" : "flex";
 
   if(view==="folder"){
     const folder=CATALOG.folders.find(f=>f.id===openFolderId);
