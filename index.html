@@ -23,23 +23,24 @@
   .brand{display:flex;align-items:center;gap:12px;padding:2px 8px 24px}
   .brand .logo{width:42px;height:42px;border-radius:13px;background:var(--teal);display:grid;place-items:center;flex:0 0 42px;box-shadow:0 5px 13px rgba(74,124,117,.32)}
   .brand .logo svg{width:23px;height:23px}
-  .brand h1{font-family:var(--serif);font-size:21px;font-weight:600;letter-spacing:.2px;line-height:1;color:var(--ink)}
+  .brand h1{font-family:var(--serif);font-size:21px;font-weight:600;line-height:1;color:var(--ink)}
   .brand span{font-size:11.5px;color:var(--muted)}
   .nav-lbl{font-size:10.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#B79C89;padding:14px 12px 6px}
-  .nav-item{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:11px 12px;border-radius:11px;color:#5B554E;font-size:14.5px;font-weight:500;transition:background .15s,color .15s;margin-bottom:2px}
+  .nav-item{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:11px 12px;border-radius:11px;color:#5B554E;font-size:14.5px;font-weight:500;transition:.15s;margin-bottom:2px}
   .nav-item:hover{background:var(--cream);color:var(--ink)}
   .nav-item.active{background:var(--teal);color:#fff;font-weight:600}
   .nav-item .ic{width:20px;height:20px;flex:0 0 20px;display:grid;place-items:center}
   .nav-item .ic svg{width:19px;height:19px}
-  .nav-item .count{margin-left:auto;font-size:11px;font-weight:600;background:var(--cream-deep);color:var(--muted);padding:2px 8px;border-radius:20px}
-  .nav-item.active .count{background:rgba(255,255,255,.26);color:#fff}
   .sidebar-foot{margin-top:auto;padding:16px 12px 2px;font-size:11px;color:var(--muted);line-height:1.55}
 
   .main{flex:1;min-width:0;display:flex;flex-direction:column}
   .wrap{max-width:1180px;width:100%;margin:0 auto;padding:34px 44px 70px}
-  .head{display:flex;align-items:flex-end;gap:20px;flex-wrap:wrap;padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:30px}
+  .head{display:flex;align-items:flex-end;gap:20px;flex-wrap:wrap;padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:28px}
   .head .titlewrap{flex:1;min-width:220px}
-  .kicker{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--beige);margin-bottom:8px}
+  .crumb{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--beige);margin-bottom:8px;flex-wrap:wrap}
+  .crumb button{color:var(--beige);font-weight:700;letter-spacing:1px}
+  .crumb button:hover{color:var(--teal)}
+  .crumb .sep{opacity:.6}
   .head h2{font-family:var(--serif);font-size:40px;font-weight:600;letter-spacing:-.3px;color:var(--ink);display:flex;align-items:center;gap:14px;line-height:1}
   .head h2 .bemoji{font-size:34px}
   .backbtn{width:40px;height:40px;border-radius:12px;background:var(--white);border:1px solid var(--line);display:grid;place-items:center;color:var(--ink);box-shadow:var(--shadow);transition:.15s;flex:0 0 40px}
@@ -47,33 +48,30 @@
   .backbtn svg{width:19px;height:19px}
   .counts{font-size:15px;color:var(--muted);padding-bottom:4px;white-space:nowrap}
   .toolbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:26px}
-  .search{display:flex;align-items:center;gap:9px;background:var(--white);border:1px solid var(--line);padding:10px 15px;border-radius:12px;min-width:240px;flex:1;max-width:380px;box-shadow:var(--shadow)}
+  .search{display:flex;align-items:center;gap:9px;background:var(--white);border:1px solid var(--line);padding:10px 15px;border-radius:12px;flex:1;max-width:380px;box-shadow:var(--shadow)}
   .search svg{width:17px;height:17px;color:var(--beige);flex:0 0 17px}
   .search input{border:none;outline:none;background:none;font-size:14px;width:100%;color:var(--ink)}
-  .search input::placeholder{color:#B4A99E}
 
   .fgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
   @media(max-width:1180px){.fgrid{grid-template-columns:repeat(4,1fr)}}
   @media(max-width:960px){.fgrid{grid-template-columns:repeat(3,1fr)}}
   @media(max-width:680px){.fgrid{grid-template-columns:repeat(2,1fr)}}
-  .folder{position:relative;background:var(--tint,#EEE7DE);border:1px solid rgba(60,50,40,.05);border-radius:18px;padding:17px 16px 15px;cursor:pointer;overflow:hidden;box-shadow:0 3px 12px rgba(60,50,40,.05);transition:transform .16s,box-shadow .16s;min-height:172px;display:flex;flex-direction:column}
+  .folder{position:relative;background:var(--tint,#EEE7DE);border:1px solid rgba(60,50,40,.05);border-radius:18px;padding:17px 16px 15px;cursor:pointer;overflow:hidden;box-shadow:0 3px 12px rgba(60,50,40,.05);transition:.16s;min-height:172px;display:flex;flex-direction:column}
   .folder:hover{transform:translateY(-5px);box-shadow:0 16px 34px rgba(60,50,40,.17)}
-  .folder .ficon{width:50px;height:50px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:24px;line-height:1;margin-bottom:15px;box-shadow:0 5px 12px rgba(60,50,40,.12)}
-  .folder .fname{font-size:16.5px;font-weight:700;color:var(--ink);line-height:1.22;letter-spacing:-.1px;margin-bottom:auto}
+  .folder .ficon{width:50px;height:50px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:24px;margin-bottom:15px;box-shadow:0 5px 12px rgba(60,50,40,.12)}
+  .folder .fname{font-size:16.5px;font-weight:700;color:var(--ink);line-height:1.22;margin-bottom:auto}
   .folder .fcount{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--muted);font-weight:500;margin-top:8px}
   .folder .fcount svg{width:14px;height:14px;opacity:.65}
-  .folder .ftag{display:flex;align-items:center;gap:6px;margin-top:10px;font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--tagfg,#666)}
-  .folder .ftag .tdot{width:6px;height:6px;border-radius:50%;background:var(--tagfg,#666)}
 
   .cgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
   @media(max-width:1180px){.cgrid{grid-template-columns:repeat(4,1fr)}}
   @media(max-width:960px){.cgrid{grid-template-columns:repeat(3,1fr)}}
   @media(max-width:680px){.cgrid{grid-template-columns:repeat(2,1fr)}}
-  .card{background:var(--white);border-radius:16px;box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column;transition:transform .14s,box-shadow .14s;border:1px solid var(--line)}
+  .card{background:var(--white);border-radius:16px;box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column;transition:.14s;border:1px solid var(--line)}
   .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
-  .card .preview{position:relative;height:170px;background:linear-gradient(150deg,var(--cream) 0%,var(--cream-deep) 100%);display:grid;place-items:center;border-bottom:1px solid var(--line);cursor:pointer;overflow:hidden}
+  .card .preview{position:relative;height:170px;background:linear-gradient(150deg,var(--cream),var(--cream-deep));display:grid;place-items:center;border-bottom:1px solid var(--line);cursor:pointer;overflow:hidden}
   .card .preview img.pdfthumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;background:#fff;z-index:1}
-  .card .filetype-badge{position:absolute;left:12px;bottom:12px;z-index:2;font-size:11px;font-weight:800;letter-spacing:.5px;background:rgba(255,255,255,.92);padding:3px 8px;border-radius:6px;box-shadow:0 2px 6px rgba(30,37,53,.12)}
+  .card .filetype-badge{position:absolute;left:12px;bottom:12px;z-index:2;font-size:11px;font-weight:800;background:rgba(255,255,255,.92);padding:3px 8px;border-radius:6px;box-shadow:0 2px 6px rgba(30,37,53,.12)}
   .card .doc-ic{width:48px;height:56px;filter:drop-shadow(0 6px 10px rgba(30,37,53,.14))}
   .card .body{padding:14px 15px 15px;display:flex;flex-direction:column;flex:1}
   .card .body h3{font-size:14.5px;font-weight:700;color:var(--ink);line-height:1.3;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
@@ -82,21 +80,19 @@
   .card .dl svg{width:16px;height:16px}
   .card .fsize{font-size:11.5px;color:var(--muted);margin-bottom:10px}
 
-  .nav-item .count.soon{background:var(--cream-deep);color:var(--teal)}
-  .nav-item.active .count.soon{background:rgba(255,255,255,.26);color:#fff}
-  .soon-card{max-width:560px;margin:6px auto 0;text-align:center;background:linear-gradient(160deg,#fff 0%,var(--cream) 100%);border:1px solid var(--line);border-radius:20px;padding:46px 34px;box-shadow:var(--shadow)}
-  .soon-ic{width:64px;height:64px;border-radius:18px;background:var(--teal);color:#fff;display:grid;place-items:center;margin:0 auto 20px}
-  .soon-ic svg{width:32px;height:32px}
-  .soon-tt{font-size:12px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
-  .soon-tx{font-family:var(--serif);font-size:19px;color:var(--ink);line-height:1.5}
   .announce{display:flex;align-items:center;gap:16px;margin-top:30px;background:linear-gradient(120deg,#fff 0%,var(--cream) 100%);border:1px solid var(--line);border-left:4px solid var(--teal);border-radius:16px;padding:18px 22px;box-shadow:var(--shadow)}
   .announce .an-ic{flex:0 0 44px;width:44px;height:44px;border-radius:12px;background:var(--teal);display:grid;place-items:center;color:#fff}
   .announce .an-ic svg{width:23px;height:23px}
   .announce .an-tt{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--teal);margin-bottom:3px}
   .announce .an-tx{font-size:14.5px;color:var(--ink);line-height:1.45}
-  @media(max-width:680px){.announce{align-items:flex-start}}
 
-  .empty{text-align:center;padding:70px 20px;color:var(--muted)}
+  .soon-card{max-width:580px;margin:6px auto 0;text-align:center;background:linear-gradient(160deg,#fff 0%,var(--cream) 100%);border:1px solid var(--line);border-radius:20px;padding:46px 34px;box-shadow:var(--shadow)}
+  .soon-ic{width:64px;height:64px;border-radius:18px;background:var(--teal);color:#fff;display:grid;place-items:center;margin:0 auto 20px}
+  .soon-ic svg{width:32px;height:32px}
+  .soon-tt{font-size:12px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
+  .soon-tx{font-family:var(--serif);font-size:19px;color:var(--ink);line-height:1.5}
+
+  .empty{text-align:center;padding:64px 20px;color:var(--muted)}
   .empty .em-ic{width:74px;height:74px;border-radius:20px;background:var(--cream-deep);display:grid;place-items:center;margin:0 auto 18px;color:var(--beige)}
   .empty .em-ic svg{width:36px;height:36px}
   .empty h3{font-family:var(--serif);color:var(--ink);font-size:20px;margin-bottom:6px;font-weight:600}
@@ -105,7 +101,7 @@
   .menu-btn{display:none}
   @media(max-width:860px){
     body{flex-direction:column}
-    .sidebar{position:fixed;left:0;top:0;z-index:80;transform:translateX(-100%);transition:transform .22s;width:250px;flex-basis:auto}
+    .sidebar{position:fixed;left:0;top:0;z-index:80;transform:translateX(-100%);transition:.22s;width:250px;flex-basis:auto}
     .sidebar.open{transform:translateX(0)}
     .backdrop{display:none;position:fixed;inset:0;background:rgba(30,37,53,.45);z-index:75}
     .backdrop.show{display:block}
@@ -132,12 +128,12 @@
       <button class="menu-btn" id="menuBtn" aria-label="Menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
       <div class="head">
         <div class="titlewrap">
-          <div class="kicker" id="kicker"></div>
+          <div class="crumb" id="crumb"></div>
           <h2 id="pageTitle"><span id="backSlot"></span><span id="titleText"></span></h2>
         </div>
         <div class="counts" id="counts"></div>
       </div>
-      <div class="toolbar">
+      <div class="toolbar" id="toolbar">
         <div class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg><input type="text" id="searchInput" placeholder="Buscar…" /></div>
       </div>
       <div id="stage"></div>
@@ -145,7 +141,7 @@
         <div class="an-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
         <div>
           <div class="an-tt">Próxima actualización</div>
-          <div class="an-tx">Este miércoles 8 de julio a las 23:00 h se subirán nuevos contenidos y habrá una actualización en la plataforma.</div>
+          <div class="an-tx">Este sábado 11 sumamos nuevos contenidos: ejes clínicos, orientación clínica, más técnicas para intervenir, y más.</div>
         </div>
       </div>
     </div>
@@ -154,155 +150,153 @@
 <script src="manifest.js"></script>
 <script>
 const COLORS={
-  teal:{tint:"#E3EEEB",tagfg:"#3B635D"},blue:{tint:"#E4EDF6",tagfg:"#3A6FA0"},
-  purple:{tint:"#F1E8F6",tagfg:"#8E5BA6"},orange:{tint:"#FBEADF",tagfg:"#C2703A"},
-  gold:{tint:"#F4ECD6",tagfg:"#A98A3C"},green:{tint:"#E9EFE6",tagfg:"#5E7360"},
-  rose:{tint:"#F9E7EA",tagfg:"#B05666"},gray:{tint:"#ECEAE6",tagfg:"#6B6259"}
+  teal:{tint:"#E3EEEB"},blue:{tint:"#E4EDF6"},purple:{tint:"#F1E8F6"},orange:{tint:"#FBEADF"},
+  gold:{tint:"#F4ECD6"},green:{tint:"#E9EFE6"},rose:{tint:"#F9E7EA"},gray:{tint:"#ECEAE6"}
 };
-const SECTION_META={tematica:{kicker:"Recursos por temática",title:"Clínica",label:"Recursos por temática",
-    icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h5l2 3h9a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Z"/></svg>'},
-  sesion:{kicker:"Herramientas de sesión",title:"Sesión",label:"Herramientas de sesión",
-    icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6a2 2 0 0 1 2-2h11l3 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M8 8h6M8 12h8M8 16h5"/></svg>'}};
-
-const CATALOG = window.CATALOG || {folders:[],files:[]};
+const SECTIONS=[
+  {id:"tematica",label:"Recursos por temática",title:"Clínica",icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h5l2 3h9a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Z"/></svg>'},
+  {id:"herramientas",label:"Herramientas de sesión",title:"Sesión",icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6a2 2 0 0 1 2-2h11l3 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M8 8h6M8 12h8M8 16h5"/></svg>'}
+];
+const CAT=window.CATALOG||{folders:[],files:[]};
 function col(k){return COLORS[k]||COLORS.gray}
 function esc(s){return (s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
-function extOf(n){return (n.split(".").pop()||"file").toUpperCase().slice(0,4)}
-function badgeColor(ext){const m={PDF:"#B85C38",DOC:"#2B6CB0",DOCX:"#2B6CB0",XLS:"#2F855A",XLSX:"#2F855A",PNG:"#805AD5",JPG:"#805AD5",JPEG:"#805AD5",PPT:"#C05621",PPTX:"#C05621"};return m[ext]||"#4A7C75"}
+function extOf(n){return (String(n).split(".").pop()||"file").toUpperCase().slice(0,4)}
+function badgeColor(x){const m={PDF:"#B85C38",DOC:"#2B6CB0",DOCX:"#2B6CB0",XLS:"#2F855A",XLSX:"#2F855A",PNG:"#805AD5",JPG:"#805AD5",JPEG:"#805AD5",PPT:"#C05621",PPTX:"#C05621"};return m[x]||"#4A7C75"}
 function fileSize(b){if(!b&&b!==0)return"";if(b<1024)return b+" B";if(b<1048576)return (b/1024).toFixed(0)+" KB";return (b/1048576).toFixed(1)+" MB"}
+function childrenOf(id){return CAT.folders.filter(f=>f.parent===id).sort((a,b)=>(a.order||0)-(b.order||0))}
+function topFolders(sec){return CAT.folders.filter(f=>f.section===sec&&!f.parent).sort((a,b)=>(a.order||0)-(b.order||0))}
+function getFolder(id){return CAT.folders.find(f=>f.id===id)}
+function isLeaf(id){return childrenOf(id).length===0}
+function filesOf(id){return CAT.files.filter(f=>f.folder===id)}
+function countRec(id){const k=childrenOf(id);if(k.length)return k.reduce((a,c)=>a+countRec(c.id),0);return filesOf(id).length}
+function pathTo(id){const p=[];let f=getFolder(id);while(f){p.unshift(f);f=f.parent?getFolder(f.parent):null}return p}
+function sectionsWithContent(){return SECTIONS.filter(s=>topFolders(s.id).length>0)}
 
-function filesIn(folderId){return CATALOG.files.filter(f=>f.folder===folderId)}
-function foldersIn(section){return CATALOG.folders.filter(f=>f.section===section && filesIn(f.id).length>0)}
-function sectionsWithContent(){return ["tematica","sesion"].filter(s=>foldersIn(s).length>0)}
-
-let view=sectionsWithContent()[0]||"tematica";
-let openFolderId=null, searchTerm="";
+let view=(sectionsWithContent()[0]||SECTIONS[0]).id, curFolder=null, searchTerm="";
 
 function renderNav(){
   const nav=document.getElementById("nav");nav.innerHTML="";
   const secs=sectionsWithContent();
   if(secs.length){const l=document.createElement("div");l.className="nav-lbl";l.textContent="Biblioteca";nav.appendChild(l)}
   secs.forEach(s=>{
-    const meta=SECTION_META[s];
     const b=document.createElement("button");
-    const active=(view===s)||(view==="folder"&&folderSection()===s);
+    const active=(view===s.id)||(view==="folder"&&folderSection()===s.id);
     b.className="nav-item"+(active?" active":"");
-    const nFiles=foldersIn(s).reduce((a,f)=>a+filesIn(f.id).length,0);
-    b.innerHTML=`<span class="ic">${meta.icon}</span><span>${meta.label}</span><span class="count">${nFiles}</span>`;
-    b.onclick=()=>{view=s;openFolderId=null;setSearch("");closeSidebar();render()};
+    b.innerHTML=`<span class="ic">${s.icon}</span><span>${s.label}</span>`;
+    b.onclick=()=>{view=s.id;curFolder=null;setSearch("");closeSidebar();render()};
     nav.appendChild(b);
   });
-  // Kit infantil (próximamente)
   const kb=document.createElement("button");
   kb.className="nav-item"+(view==="kitinfantil"?" active":"");
-  kb.innerHTML=`<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 14a4 4 0 0 0 7 0"/><path d="M9 9h.01M15 9h.01"/></svg></span><span>Kit infantil</span><span class="count soon">Pronto</span>`;
-  kb.onclick=()=>{view="kitinfantil";openFolderId=null;setSearch("");closeSidebar();render()};
+  kb.innerHTML=`<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 14a4 4 0 0 0 7 0"/><path d="M9 9h.01M15 9h.01"/></svg></span><span>Kit infantil</span>`;
+  kb.onclick=()=>{view="kitinfantil";curFolder=null;setSearch("");closeSidebar();render()};
   nav.appendChild(kb);
-  const total=CATALOG.files.length;
+  const total=CAT.files.length;
   document.getElementById("foot").innerHTML=`Biblioteca de recursos para profesionales.<br>${total} archivo${total===1?"":"s"} disponibles.`;
 }
-function folderSection(){const f=CATALOG.folders.find(x=>x.id===openFolderId);return f?f.section:null}
+function folderSection(){const f=getFolder(curFolder);return f?f.section:null}
 
 function render(){
   renderNav();
   const stage=document.getElementById("stage");
   document.getElementById("backSlot").innerHTML="";
-  document.getElementById("announce").style.display = (view==="folder"||view==="kitinfantil") ? "none" : "flex";
-  document.querySelector(".toolbar").style.display = (view==="kitinfantil") ? "none" : "flex";
+  document.getElementById("crumb").innerHTML="";
+  document.getElementById("announce").style.display="none";
+  document.getElementById("toolbar").style.display="flex";
 
   if(view==="kitinfantil"){
-    document.getElementById("kicker").textContent="Biblioteca";
+    document.getElementById("crumb").textContent="Biblioteca";
     document.getElementById("titleText").innerHTML='<span class="bemoji">🧸</span> Kit infantil';
-    document.getElementById("counts").textContent="Próximamente";
+    document.getElementById("counts").textContent="Se actualiza hoy";
+    document.getElementById("toolbar").style.display="none";
     stage.innerHTML="";
     const d=document.createElement("div");d.className="soon-card";
-    d.innerHTML=`<div class="soon-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div><div class="soon-tt">Próxima actualización</div><p class="soon-tx">Este miércoles 8 de julio a las 23:00 h se subirán nuevos contenidos y habrá una actualización en la plataforma.</p>`;
+    d.innerHTML=`<div class="soon-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div><div class="soon-tt">Se actualiza hoy</div><p class="soon-tx">El Kit infantil se actualiza hoy. ¡Muy pronto vas a encontrar acá sus recursos!</p>`;
     stage.appendChild(d);
     return;
   }
 
   if(view==="folder"){
-    const folder=CATALOG.folders.find(f=>f.id===openFolderId);
-    if(!folder){view=sectionsWithContent()[0]||"tematica";return render()}
-    const meta=SECTION_META[folder.section];
-    document.getElementById("kicker").textContent=meta.kicker;
+    const folder=getFolder(curFolder);
+    if(!folder){view=(sectionsWithContent()[0]||SECTIONS[0]).id;curFolder=null;return render()}
+    const sec=SECTIONS.find(s=>s.id===folder.section);
+    const path=pathTo(folder.id);
+    const parts=[`<button data-sec="${sec.id}">${esc(sec.label)}</button>`];
+    path.slice(0,-1).forEach(p=>parts.push(`<span class="sep">›</span><button data-f="${p.id}">${esc(p.name)}</button>`));
+    const cr=document.getElementById("crumb");cr.innerHTML=parts.join("");
+    cr.querySelectorAll("button").forEach(bt=>bt.onclick=()=>{if(bt.dataset.sec){view=bt.dataset.sec;curFolder=null}else curFolder=bt.dataset.f;setSearch("");render()});
     document.getElementById("titleText").innerHTML=`<span class="bemoji">${folder.emoji||"📁"}</span> ${esc(folder.name)}`;
-    const back=document.createElement("button");back.className="backbtn";back.title="Volver";
+    const back=document.createElement("button");back.className="backbtn";
     back.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>';
-    back.onclick=()=>{view=folder.section;openFolderId=null;setSearch("");render()};
+    back.onclick=()=>{if(folder.parent){curFolder=folder.parent}else{view=folder.section;curFolder=null}setSearch("");render()};
     document.getElementById("backSlot").appendChild(back);
-    let files=filesIn(folder.id).slice().sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
+
+    if(!isLeaf(folder.id)){
+      let kids=childrenOf(folder.id);const tf=kids.reduce((a,k)=>a+countRec(k.id),0);
+      document.getElementById("counts").textContent=`${kids.length} secciones · ${tf} archivo${tf===1?"":"s"}`;
+      document.getElementById("searchInput").placeholder="Buscar sección…";
+      if(searchTerm){const t=searchTerm.toLowerCase();kids=kids.filter(k=>k.name.toLowerCase().includes(t))}
+      stage.innerHTML="";const g=document.createElement("div");g.className="fgrid";
+      kids.forEach(k=>g.appendChild(folderCard(k)));stage.appendChild(g);
+      return;
+    }
+    let files=filesOf(folder.id).slice().sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
     if(searchTerm){const t=searchTerm.toLowerCase();files=files.filter(f=>(f.title||"").toLowerCase().includes(t)||(f.name||"").toLowerCase().includes(t))}
     document.getElementById("counts").textContent=`${files.length} archivo${files.length===1?"":"s"}`;
     document.getElementById("searchInput").placeholder="Buscar en esta carpeta…";
     stage.innerHTML="";
-    if(!files.length){stage.appendChild(makeEmpty(searchTerm?"Sin resultados":"Carpeta vacía",searchTerm?"Probá con otro término.":"Todavía no hay archivos en esta carpeta."));return}
-    const grid=document.createElement("div");grid.className="cgrid";
-    files.forEach(f=>grid.appendChild(fileCard(f)));
-    stage.appendChild(grid);
+    if(!files.length){stage.appendChild(makeEmpty(searchTerm?"Sin resultados":"Muy pronto",searchTerm?"Probá con otro término.":"Estamos sumando recursos a esta carpeta. ¡Volvé pronto!"));return}
+    const g=document.createElement("div");g.className="cgrid";
+    files.forEach(f=>g.appendChild(fileCard(f)));stage.appendChild(g);
     return;
   }
 
-  const meta=SECTION_META[view];
-  document.getElementById("kicker").textContent=meta.kicker;
-  document.getElementById("titleText").textContent=meta.title;
-  let list=foldersIn(view);
-  const totalFiles=list.reduce((a,f)=>a+filesIn(f.id).length,0);
-  document.getElementById("counts").textContent=`${list.length} carpeta${list.length===1?"":"s"} · ${totalFiles} archivo${totalFiles===1?"":"s"}`;
+  // section view
+  const sec=SECTIONS.find(s=>s.id===view);
+  document.getElementById("crumb").textContent=sec.label;
+  document.getElementById("titleText").textContent=sec.title;
+  let list=topFolders(view);const tf=list.reduce((a,f)=>a+countRec(f.id),0);
+  document.getElementById("counts").textContent=`${list.length} carpeta${list.length===1?"":"s"} · ${tf} archivo${tf===1?"":"s"}`;
   document.getElementById("searchInput").placeholder="Buscar carpeta…";
-  if(searchTerm){const t=searchTerm.toLowerCase();list=list.filter(f=>f.name.toLowerCase().includes(t)||(f.tag||"").toLowerCase().includes(t))}
+  if(searchTerm){const t=searchTerm.toLowerCase();list=list.filter(f=>f.name.toLowerCase().includes(t))}
   stage.innerHTML="";
-  if(!list.length){stage.appendChild(makeEmpty("Sin resultados","No hay carpetas que coincidan."));return}
-  const grid=document.createElement("div");grid.className="fgrid";
-  list.forEach(f=>grid.appendChild(folderCard(f)));
-  stage.appendChild(grid);
+  if(!list.length){stage.appendChild(makeEmpty("Sin resultados","No hay carpetas que coincidan."));}
+  else{const g=document.createElement("div");g.className="fgrid";list.forEach(f=>g.appendChild(folderCard(f)));stage.appendChild(g)}
+  document.getElementById("announce").style.display="flex";
 }
 
 function folderCard(f){
-  const c=col(f.color);const count=filesIn(f.id).length;
-  const el=document.createElement("div");el.className="folder";
-  el.style.setProperty("--tint",c.tint);el.style.setProperty("--tagfg",c.tagfg);
+  const c=col(f.color);const container=!isLeaf(f.id);const count=countRec(f.id);
+  const el=document.createElement("div");el.className="folder";el.style.setProperty("--tint",c.tint);
   el.innerHTML=`
     <div class="ficon">${f.emoji||"📁"}</div>
     <div class="fname">${esc(f.name)}</div>
-    <div class="fcount"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="M3 13l9 5 9-5"/></svg>${count} archivo${count===1?"":"s"}</div>`;
-  el.onclick=()=>{view="folder";openFolderId=f.id;setSearch("");render()};
+    <div class="fcount"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="M3 13l9 5 9-5"/></svg>${container?childrenOf(f.id).length+" secciones":count+" archivo"+(count===1?"":"s")}</div>`;
+  el.onclick=()=>{view="folder";curFolder=f.id;setSearch("");render()};
   return el;
 }
-
 function fileCard(f){
-  const ext=extOf(f.name||f.path||"");
-  const hasThumb=typeof f.thumb==="string"&&f.thumb.length>0;
-  const visual=hasThumb
-    ? `<img class="pdfthumb" src="${esc(f.thumb)}" alt="" loading="lazy">`
-    : `<svg class="doc-ic" viewBox="0 0 48 56" fill="none"><path d="M6 2h26l10 10v40a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z" fill="#fff" stroke="#C4A99A" stroke-width="1.5"/><path d="M32 2v10h10" fill="#F5E8DC" stroke="#C4A99A" stroke-width="1.5"/><rect x="11" y="24" width="26" height="3" rx="1.5" fill="#E3D3C6"/><rect x="11" y="31" width="26" height="3" rx="1.5" fill="#E3D3C6"/><rect x="11" y="38" width="17" height="3" rx="1.5" fill="#E3D3C6"/></svg>`;
+  const ext=extOf(f.name||f.path);
+  const thumb=typeof f.thumb==="string"&&f.thumb.length>0?f.thumb:null;
+  const visual=thumb?`<img class="pdfthumb" src="${esc(thumb)}" alt="" loading="lazy">`
+    :`<svg class="doc-ic" viewBox="0 0 48 56" fill="none"><path d="M6 2h26l10 10v40a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z" fill="#fff" stroke="#C4A99A" stroke-width="1.5"/><path d="M32 2v10h10" fill="#F5E8DC" stroke="#C4A99A" stroke-width="1.5"/><rect x="11" y="24" width="26" height="3" rx="1.5" fill="#E3D3C6"/><rect x="11" y="31" width="26" height="3" rx="1.5" fill="#E3D3C6"/><rect x="11" y="38" width="17" height="3" rx="1.5" fill="#E3D3C6"/></svg>`;
   const card=document.createElement("div");card.className="card";
   card.innerHTML=`
     <div class="preview">${visual}<span class="filetype-badge" style="color:${badgeColor(ext)}">${ext}</span></div>
     <div class="body">
       <h3>${esc(f.title||f.name)}</h3>
       <div class="fsize">${fileSize(f.size)}</div>
-      <a class="dl" href="${esc(f.path)}" download="${esc(f.name||'')}" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
-        Descargar
-      </a>
+      <a class="dl" href="${esc(f.path)}" download="${esc(f.name||'')}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg> Descargar</a>
     </div>`;
   card.querySelector(".preview").onclick=()=>window.open(f.path,"_blank");
   return card;
 }
-
-function makeEmpty(title,html){
-  const d=document.createElement("div");d.className="empty";
-  d.innerHTML=`<div class="em-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h5l2 3h9a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Z"/></svg></div><h3>${title}</h3><p>${html}</p>`;
-  return d;
-}
+function makeEmpty(t,h){const d=document.createElement("div");d.className="empty";d.innerHTML=`<div class="em-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h5l2 3h9a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Z"/></svg></div><h3>${t}</h3><p>${h}</p>`;return d}
 function setSearch(v){searchTerm=v;document.getElementById("searchInput").value=v}
 function closeSidebar(){document.getElementById("sidebar").classList.remove("open");document.getElementById("backdrop").classList.remove("show")}
-
 document.getElementById("searchInput").oninput=e=>{searchTerm=e.target.value;render()};
 document.getElementById("menuBtn").onclick=()=>{document.getElementById("sidebar").classList.add("open");document.getElementById("backdrop").classList.add("show")};
 document.getElementById("backdrop").onclick=closeSidebar;
-
 render();
 </script>
 </body>
