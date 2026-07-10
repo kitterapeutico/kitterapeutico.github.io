@@ -224,9 +224,9 @@ function render(){
   if(view==="folder"){
     const folder=getFolder(curFolder);
     if(!folder){view=(sectionsWithContent()[0]||SECTIONS[0]).id;curFolder=null;return render()}
-    const sec=SECTIONS.find(s=>s.id===folder.section);
+    const sec=SEC_META[folder.section]||{label:folder.section};
     const path=pathTo(folder.id);
-    const parts=[`<button data-sec="${sec.id}">${esc(sec.label)}</button>`];
+    const parts=[`<button data-sec="${folder.section}">${esc(sec.label)}</button>`];
     path.slice(0,-1).forEach(p=>parts.push(`<span class="sep">›</span><button data-f="${p.id}">${esc(p.name)}</button>`));
     const cr=document.getElementById("crumb");cr.innerHTML=parts.join("");
     cr.querySelectorAll("button").forEach(bt=>bt.onclick=()=>{if(bt.dataset.sec){view=bt.dataset.sec;curFolder=null}else curFolder=bt.dataset.f;setSearch("");render()});
