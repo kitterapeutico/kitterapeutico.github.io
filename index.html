@@ -141,7 +141,7 @@
         <div class="an-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
         <div>
           <div class="an-tt">Próxima actualización</div>
-          <div class="an-tx">Este sábado 11 sumamos nuevos contenidos: ejes clínicos, orientación clínica, más técnicas para intervenir, y más.</div>
+          <div class="an-tx" id="anTx">Este domingo 12 sumamos nuevos contenidos: ejes clínicos, orientación clínica, más técnicas para intervenir, y más.</div>
         </div>
       </div>
     </div>
@@ -157,10 +157,14 @@ const SECTIONS=[
   {id:"tematica",label:"Recursos por temática",title:"Clínica",icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h5l2 3h9a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Z"/></svg>'},
   {id:"herramientas",label:"Herramientas de sesión",title:"Sesión",icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6a2 2 0 0 1 2-2h11l3 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M8 8h6M8 12h8M8 16h5"/></svg>'}
 ];
+const SEC_META={tematica:{label:"Recursos por temática",title:"Clínica"},herramientas:{label:"Herramientas de sesión",title:"Sesión"},kitinfantil:{label:"Kit infantil",title:"Kit infantil"}};
 const CAT=window.CATALOG||{folders:[],files:[]};
 function col(k){return COLORS[k]||COLORS.gray}
 function esc(s){return (s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function extOf(n){return (String(n).split(".").pop()||"file").toUpperCase().slice(0,4)}
+function isImage(n){return /\.(png|jpe?g|gif|webp|bmp)$/i.test(n||"")}
+function isPdf(n){return /\.pdf$/i.test(n||"")}
+function fileRank(f){return isPdf(f.name||f.path||"")?0:1}
 function badgeColor(x){const m={PDF:"#B85C38",DOC:"#2B6CB0",DOCX:"#2B6CB0",XLS:"#2F855A",XLSX:"#2F855A",PNG:"#805AD5",JPG:"#805AD5",JPEG:"#805AD5",PPT:"#C05621",PPTX:"#C05621"};return m[x]||"#4A7C75"}
 function fileSize(b){if(!b&&b!==0)return"";if(b<1024)return b+" B";if(b<1048576)return (b/1024).toFixed(0)+" KB";return (b/1048576).toFixed(1)+" MB"}
 function childrenOf(id){return CAT.folders.filter(f=>f.parent===id).sort((a,b)=>(a.order||0)-(b.order||0))}
@@ -204,7 +208,8 @@ function render(){
   document.getElementById("announce").style.display="none";
   document.getElementById("toolbar").style.display="flex";
 
-  if(view==="kitinfantil"){
+  const kitHasContent=topFolders("kitinfantil").length>0||filesOf("kitinfantil").length>0;
+  if(view==="kitinfantil"&&!kitHasContent){
     document.getElementById("crumb").textContent="Biblioteca";
     document.getElementById("titleText").innerHTML='<span class="bemoji">🧸</span> Kit infantil';
     document.getElementById("counts").textContent="Próxima actualización";
@@ -240,7 +245,7 @@ function render(){
       kids.forEach(k=>g.appendChild(folderCard(k)));stage.appendChild(g);
       return;
     }
-    let files=filesOf(folder.id).slice().sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
+    let files=filesOf(folder.id).slice().sort((a,b)=>(fileRank(a)-fileRank(b))||((b.createdAt||0)-(a.createdAt||0)));
     if(searchTerm){const t=searchTerm.toLowerCase();files=files.filter(f=>(f.title||"").toLowerCase().includes(t)||(f.name||"").toLowerCase().includes(t))}
     document.getElementById("counts").textContent=`${files.length} archivo${files.length===1?"":"s"}`;
     document.getElementById("searchInput").placeholder="Buscar en esta carpeta…";
@@ -251,17 +256,30 @@ function render(){
     return;
   }
 
-  // section view
-  const sec=SECTIONS.find(s=>s.id===view);
-  document.getElementById("crumb").textContent=sec.label;
-  document.getElementById("titleText").textContent=sec.title;
-  let list=topFolders(view);const tf=list.reduce((a,f)=>a+countRec(f.id),0);
+  // section view (temática / herramientas / kit infantil con contenido)
+  const meta=SEC_META[view]||{label:view,title:view};
+  document.getElementById("crumb").textContent=meta.label;
+  document.getElementById("titleText").textContent=meta.title;
+  let list=topFolders(view);
+  const loose=filesOf(view).slice().sort((a,b)=>(fileRank(a)-fileRank(b))||((b.createdAt||0)-(a.createdAt||0)));
+  const tf=list.reduce((a,f)=>a+countRec(f.id),0)+loose.length;
   document.getElementById("counts").textContent=`${list.length} carpeta${list.length===1?"":"s"} · ${tf} archivo${tf===1?"":"s"}`;
   document.getElementById("searchInput").placeholder="Buscar carpeta…";
-  if(searchTerm){const t=searchTerm.toLowerCase();list=list.filter(f=>f.name.toLowerCase().includes(t))}
+  let flist=list;
+  if(searchTerm){const t=searchTerm.toLowerCase();flist=list.filter(f=>f.name.toLowerCase().includes(t))}
   stage.innerHTML="";
-  if(!list.length){stage.appendChild(makeEmpty("Sin resultados","No hay carpetas que coincidan."));}
-  else{const g=document.createElement("div");g.className="fgrid";list.forEach(f=>g.appendChild(folderCard(f)));stage.appendChild(g)}
+  if(!flist.length&&!loose.length){stage.appendChild(makeEmpty("Sin resultados","No hay carpetas que coincidan."));}
+  else{
+    if(flist.length){const g=document.createElement("div");g.className="fgrid";flist.forEach(f=>g.appendChild(folderCard(f)));stage.appendChild(g)}
+    if(!searchTerm&&loose.length){
+      const lbl=document.createElement("div");lbl.style.cssText="margin:30px 0 12px;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#B79C89";lbl.textContent="Recursos";
+      stage.appendChild(lbl);
+      const cg=document.createElement("div");cg.className="cgrid";loose.forEach(f=>cg.appendChild(fileCard(f)));stage.appendChild(cg);
+    }
+  }
+  document.getElementById("anTx").textContent = (view==="kitinfantil")
+    ? "El domingo 12 se van a agregar nuevos recursos al Kit infantil."
+    : "Este domingo 12 sumamos nuevos contenidos: ejes clínicos, orientación clínica, más técnicas para intervenir, y más.";
   document.getElementById("announce").style.display="flex";
 }
 
@@ -277,8 +295,9 @@ function folderCard(f){
 }
 function fileCard(f){
   const ext=extOf(f.name||f.path);
-  const thumb=typeof f.thumb==="string"&&f.thumb.length>0?f.thumb:null;
-  const visual=thumb?`<img class="pdfthumb" src="${esc(thumb)}" alt="" loading="lazy">`
+  const hasThumb=typeof f.thumb==="string"&&f.thumb.length>0;
+  const src=hasThumb?f.thumb:(isImage(f.name||f.path)?f.path:null);
+  const visual=src?`<img class="pdfthumb" src="${esc(src)}" alt="" loading="lazy">`
     :`<svg class="doc-ic" viewBox="0 0 48 56" fill="none"><path d="M6 2h26l10 10v40a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z" fill="#fff" stroke="#C4A99A" stroke-width="1.5"/><path d="M32 2v10h10" fill="#F5E8DC" stroke="#C4A99A" stroke-width="1.5"/><rect x="11" y="24" width="26" height="3" rx="1.5" fill="#E3D3C6"/><rect x="11" y="31" width="26" height="3" rx="1.5" fill="#E3D3C6"/><rect x="11" y="38" width="17" height="3" rx="1.5" fill="#E3D3C6"/></svg>`;
   const card=document.createElement("div");card.className="card";
   card.innerHTML=`
