@@ -277,10 +277,6 @@ function render(){
       const cg=document.createElement("div");cg.className="cgrid";loose.forEach(f=>cg.appendChild(fileCard(f)));stage.appendChild(cg);
     }
   }
-  document.getElementById("anTx").textContent = (view==="kitinfantil")
-    ? "El lunes 20 de julio se van a agregar nuevos recursos al Kit infantil."
-    : "Este lunes 20 de julio sumamos nuevos contenidos: ejes clínicos, orientación clínica, más técnicas para intervenir, y más.";
-  document.getElementById("announce").style.display="flex";
 }
 
 function folderCard(f){
